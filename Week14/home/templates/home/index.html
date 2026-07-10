@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Django App</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 100px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #2563eb;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #15803d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Simple Django App</h1>
+
+        <p>Enter your name below:</p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <br>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        {% if name %}
+            <div class="message">
+                <h2>Hello, {{ name }}!</h2>
+                <p>Welcome to your first Django application.</p>
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
